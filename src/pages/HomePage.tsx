@@ -10,7 +10,7 @@ export default function HomePage(props:{items:Item[]}) {
                     props.items.map((item, i) => {
                     return (
                         <a key={i} href={`/${item.dir}`} className="bg-fuchsia-50 dark:bg-gray-700 rounded-md p-3 pt-1 hover:text-violet-300 hover:shadow">
-                            <p className="text-center text-md font-medium">{item.dir.replace('/', ' ')}</p>
+                            <p className="text-center text-md font-medium">{item.dir.replaceAll('/', ' ')}</p>
                             <img src={`/meme/${item.dir}/${item.preview}`} alt={`${item.dir} 预览`}/>
                         </a>
                     )

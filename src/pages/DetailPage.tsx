@@ -21,11 +21,11 @@ export default function DetailPage(props:{item:Item}) {
 
     const share = useCallback(async () => {
         navigator.share({
-            title: props.item.dir.replace('/', ' ') + ' 萌萌表情包',
-            text: props.item.dir.replace('/', ' ') + ' 萌萌表情包',
+            title: props.item.dir.replaceAll('/', ' ') + ' 萌萌表情包',
+            text: props.item.dir.replaceAll('/', ' ') + ' 萌萌表情包',
             url: window.location.toString(),
         })
-        navigator.clipboard.writeText(props.item.dir.replace('/', ' ') + ' 萌萌表情包\n' + window.location.toString());
+        navigator.clipboard.writeText(props.item.dir.replaceAll('/', ' ') + ' 萌萌表情包\n' + window.location.toString());
     }, [props.item]);
 
     const download = useCallback(async () => {
@@ -44,16 +44,16 @@ export default function DetailPage(props:{item:Item}) {
                 level: 9
             }
         });
-        saveAs(content, props.item.dir.replace('/', '-') + '.zip');
+        saveAs(content, props.item.dir.replaceAll('/', '-') + '.zip');
     }, [props.item]);
 
     return (
         <div className="flex-1 flex flex-col items-center gap-3 m-auto p-2">
-            <h1 className='text-4xl font-extrabold tracking-tight bg-gradient-to-r from-[#39c5bb] to-[#66CCFF] bg-clip-text text-transparent drop-shadow-md text-center'>{props.item.dir.replace('/', ' ')}</h1>
+            <h1 className='text-4xl font-extrabold tracking-tight bg-gradient-to-r from-[#39c5bb] to-[#66CCFF] bg-clip-text text-transparent drop-shadow-md text-center'>{props.item.dir.replaceAll('/', ' ')}</h1>
             <div className="flex-1 flex flex-col md:flex-row gap-2">
                 <div className="flex-2 flex flex-col gap-2">
                     <img className="rounded-md hover:shadow" src={`/meme/${props.item.dir}/${props.item.raw}`} alt={`${props.item.dir} 原图`}/>
-                    <div className="flex gap-2 items-center">
+                    <div className="flex gap-2  justify-end items-center flex-wrap">
                         <a className='hover:text-violet-500 dark:hover:text-violet-300 cursor-pointer hover:animate-pulse' href="/">首页</a>
                         {
                             entries.map((entry, i) => {
@@ -61,8 +61,10 @@ export default function DetailPage(props:{item:Item}) {
                             })
                         }
                         <span className="flex-1"/>
-                        <button className="cursor-pointer bg-pink-300 dark:bg-emerald-600 py-1 px-3 rounded-md hover:scale-105 active:scale-95" onClick={share}><ShareIcon/></button>
-                        <button className="cursor-pointer bg-pink-300 dark:bg-emerald-600 py-1 px-3 rounded-md hover:scale-105 active:scale-95" onClick={download}><DownloadIcon/></button>
+                        <div className="flex gap-2 items-center">
+                            <button className="cursor-pointer bg-pink-300 dark:bg-emerald-600 py-1 px-3 rounded-md hover:scale-105 active:scale-95" onClick={share}><ShareIcon/></button>
+                            <button className="cursor-pointer bg-pink-300 dark:bg-emerald-600 py-1 px-3 rounded-md hover:scale-105 active:scale-95" onClick={download}><DownloadIcon/></button>
+                        </div>
                     </div>
                     <div className="grid grid-cols-[repeat(auto-fit,minmax(100px,1fr))] gap-2">
                         {

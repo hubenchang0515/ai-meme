@@ -17,7 +17,7 @@ function App() {
                             )
                         })
                     }
-                    <Route path='/*' element={<SearchPage/>}/>
+                    <Route path='/*' element={<SearchPage items={items}/>}/>
                 </Routes>
             </div>
         </div>
