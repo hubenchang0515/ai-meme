@@ -74,6 +74,5 @@ async function main() {
     fs.writeFile('src/assets/index.json', data);
 }
 
-if (import.meta.main) {
-    main()
-}
+
+main()
