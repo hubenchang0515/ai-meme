@@ -36,7 +36,7 @@ export default function DetailPage(props:{item:Item}) {
             zip.file(image, blob);
         }
         zip.file("README.txt", `本站（${ORIGON}）表情均由 AI 生成，禁止用于商业用途。`);
-        zip.file("README.md", `![预览](${ORIGON}/meme/${props.item.dir}/${props.item.preview})\n\n本站（${ORIGON}/）表情均由 AI 生成，禁止用于商业用途。`);
+        zip.file("README.md", `![预览](${ORIGON}/meme/${props.item.dir}/${props.item.preview})\n\n本站（<${ORIGON}>）表情均由 AI 生成，禁止用于商业用途。`);
         const content = await zip.generateAsync({
             type: 'blob',
             compression: 'DEFLATE',
