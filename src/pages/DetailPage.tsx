@@ -5,6 +5,7 @@ import type { Item } from "../utils/catalog";
 import JSZip from "jszip";
 import { saveAs } from 'file-saver';
 
+const ORIGON = 'https://meme.xplanc.org'
 
 export default function DetailPage(props:{item:Item}) {
     const parts = useMemo(() => {
@@ -34,7 +35,8 @@ export default function DetailPage(props:{item:Item}) {
             const blob = await response.blob();
             zip.file(image, blob);
         }
-        zip.file("README.txt", `本站（https://meme.xplanc.org/）表情均由 AI 生成，禁止用于商业用途。`);
+        zip.file("README.txt", `本站（${ORIGON}）表情均由 AI 生成，禁止用于商业用途。`);
+        zip.file("README.md", `![预览](${ORIGON}/meme/${props.item.dir}/${props.item.preview})\n\n本站（${ORIGON}/）表情均由 AI 生成，禁止用于商业用途。`);
         const content = await zip.generateAsync({
             type: 'blob',
             compression: 'DEFLATE',
