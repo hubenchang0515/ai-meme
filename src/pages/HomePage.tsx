@@ -1,5 +1,6 @@
 import Declaration from "../components/Declaration";
 import EntryList from "../components/EntryList";
+import Footer from "../components/Footer";
 import Search from "../components/Search";
 import type { Item } from "../utils/catalog";
 import { shuffle } from "../utils/rand";
@@ -17,12 +18,7 @@ export default function HomePage(props:{items:Item[]}) {
                     <Search/>
                 </aside>
             </div>
-            <footer>
-                <span className='flex flex-row gap-2 text-xs sm:text-sm text-slate-500'>
-                    <a className='cursor-pointer hover:text-violet-400 hover:animate-pulse' href='https://xplanc.org/'>我的主页</a>
-                    <a className='cursor-pointer hover:text-violet-500 hover:animate-pulse' href='https://github.com/hubenchang0515/meme'>本站源码</a>
-                </span>
-            </footer>
+            <Footer/>
         </div>
     )
 }

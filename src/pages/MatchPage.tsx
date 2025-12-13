@@ -5,6 +5,7 @@ import Declaration from "../components/Declaration";
 import Breadcrumb from "../components/Breadcrumb";
 import EntryList from "../components/EntryList";
 import Search from "../components/Search";
+import Footer from "../components/Footer";
 
 export default function MatchPage(props:{items:Item[]}) {
     const { '*': prefix } = useParams(); // 获取通配符部分
@@ -27,12 +28,7 @@ export default function MatchPage(props:{items:Item[]}) {
                     <Search/>
                 </aside>
             </div>
-            <footer>
-                <span className='flex flex-row gap-2 text-xs sm:text-sm text-slate-500'>
-                    <a className='cursor-pointer hover:text-violet-400 hover:animate-pulse' href='https://xplanc.org/'>我的主页</a>
-                    <a className='cursor-pointer hover:text-violet-500 hover:animate-pulse' href='https://github.com/hubenchang0515/meme'>本站源码</a>
-                </span>
-            </footer>
+            <Footer/>
         </div>
     )
 }
