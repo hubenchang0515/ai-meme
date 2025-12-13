@@ -2,6 +2,7 @@ import Declaration from "../components/Declaration";
 import EntryList from "../components/EntryList";
 import Search from "../components/Search";
 import type { Item } from "../utils/catalog";
+import { shuffle } from "../utils/rand";
 
 export default function HomePage(props:{items:Item[]}) {
     return (
@@ -9,7 +10,7 @@ export default function HomePage(props:{items:Item[]}) {
             <h1 className='text-4xl font-extrabold tracking-tight bg-gradient-to-r from-[#39c5bb] to-[#66CCFF] bg-clip-text text-transparent drop-shadow-md text-center'>萌萌表情包</h1>
             <div className="flex-1 flex flex-col md:flex-row gap-2">
                 <main className="flex-2 flex flex-col gap-2">
-                    <EntryList items={props.items}/>
+                    <EntryList items={shuffle(props.items)}/>
                 </main>
                 <aside className="flex-1 flex flex-col gap-2">
                     <Declaration/>
