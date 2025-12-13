@@ -1,4 +1,4 @@
-import { useCallback, useMemo } from "react";
+import { useCallback } from "react";
 import DownloadIcon from "../assets/icons/DownloadIcon";
 import ShareIcon from "../assets/icons/ShareIcon";
 import type { Item } from "../utils/catalog";
@@ -11,17 +11,6 @@ import Search from "../components/Search";
 const ORIGON = 'https://meme.xplanc.org'
 
 export default function DetailPage(props:{item:Item}) {
-    const parts = useMemo(() => {
-        return props.item.dir.split('/').filter(Boolean);
-    }, [props.item.dir]);
-
-    const entries = useMemo(() => parts.map((part, index) => {
-        return {
-            name: part,
-            path: parts.slice(0, index + 1).join('/'),
-        };
-    }), [parts]);
-
     const share = useCallback(async () => {
         navigator.share({
             title: props.item.dir.replaceAll('/', ' ') + ' 萌萌表情包',
