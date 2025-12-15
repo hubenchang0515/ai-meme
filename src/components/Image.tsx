@@ -11,7 +11,7 @@ export default function Image(props:React.ImgHTMLAttributes<HTMLImageElement>) {
 
     return (
         <div ref={divRef} className="bg-gray-300 animate-pulse">
-            <img ref={imgRef} className="w-full rounded-md hover:shadow opacity-0" {...props} onLoad={onLoad}/>
+            <img ref={imgRef} className="w-full rounded-md opacity-0" {...props} onLoad={onLoad}/>
         </div>
     )
 }

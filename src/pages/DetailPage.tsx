@@ -46,7 +46,9 @@ export default function DetailPage(props:{item:Item}) {
             <h1 className='text-4xl font-extrabold tracking-tight bg-gradient-to-r from-pink-300 to-rose-300 bg-clip-text text-transparent drop-shadow-md text-center'>{props.item.dir.replaceAll('/', ' ')}</h1>
             <div className="flex-1 flex flex-col md:flex-row gap-2">
                 <div className="flex-2 flex flex-col gap-2">
-                    <Image src={`/meme/${props.item.dir}/${props.item.raw}`} alt={`${props.item.dir} 原图`} width={830} height={460}/>
+                    <div className="hover:shadow">
+                        <Image src={`/meme/${props.item.dir}/${props.item.raw}`} alt={`${props.item.dir} 原图`} width={830} height={460}/>
+                    </div>
                     <div className="flex gap-2 justify-end items-center flex-wrap">
                         <Breadcrumb path={props.item.dir}/>
                         <span className="flex-1"/>
@@ -59,7 +61,7 @@ export default function DetailPage(props:{item:Item}) {
                         {
                             props.item.images.map((image, i) => {
                                 return (
-                                    <div key={i}>
+                                    <div key={i} className="hover:shadow">
                                         <Image src={`/meme/${props.item.dir}/${image}`} alt={`${props.item.dir} #${i+1}`} width={115} height={95}/>
                                     </div>
                                 )
