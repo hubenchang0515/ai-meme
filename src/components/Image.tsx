@@ -6,12 +6,12 @@ export default function Image(props:React.ImgHTMLAttributes<HTMLImageElement>) {
 
     const onLoad = useCallback(() => {
         imgRef.current?.classList.remove("opacity-0");
-        divRef.current?.classList.remove("animate-pulse");
+        divRef.current?.classList.remove("animate-pulse", "bg-gray-300");
     }, []);
 
     return (
         <div ref={divRef} className="bg-gray-300 animate-pulse">
-            <img ref={imgRef} className="w-full rounded-md hover:shadow opacity-0 bg-gray-300" {...props} onLoad={onLoad}/>
+            <img ref={imgRef} className="w-full rounded-md hover:shadow opacity-0" {...props} onLoad={onLoad}/>
         </div>
     )
 }
