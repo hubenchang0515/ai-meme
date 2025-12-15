@@ -1,8 +1,10 @@
+import Image from "./Image";
+
 export default function Declaration() {
     return (
         <div className="bg-fuchsia-50 dark:bg-gray-700 rounded-md p-2 text-xs sm:text-sm">
             <div>
-                <img src="/icon.png"/>
+                <Image src="/icon.png" width={400} height={400}/>
             </div>
             本站表情均由 AI 生成，
             并使用 <a className='text-violet-500 dark:text-violet-300 cursor-pointer hover:animate-pulse' href="https://misc.xplanc.org/cut-6x4">此页面</a> 进行裁剪分割。
