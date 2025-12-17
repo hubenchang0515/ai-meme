@@ -57,7 +57,7 @@ export default function DetailPage(props:{item:Item}) {
                             <button className="cursor-pointer bg-pink-300 dark:bg-emerald-600 py-1 px-3 rounded-md hover:scale-105 active:scale-95" onClick={download}><DownloadIcon/></button>
                         </div>
                     </div>
-                    <div className="grid grid-cols-[repeat(auto-fit,minmax(100px,1fr))] gap-2">
+                    <div className="grid grid-cols-3 md:grid-cols-6 gap-2">
                         {
                             props.item.images.map((image, i) => {
                                 return (
