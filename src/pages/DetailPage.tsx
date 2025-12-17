@@ -47,7 +47,7 @@ export default function DetailPage(props:{item:Item}) {
             <div className="flex-1 flex flex-col md:flex-row gap-2">
                 <div className="flex-2 flex flex-col gap-2">
                     <div className="hover:shadow">
-                        <Image src={`/meme/${props.item.dir}/${props.item.raw}`} alt={`${props.item.dir} 原图`} width={830} height={460}/>
+                        <Image src={`/meme/${props.item.dir}/${props.item.preview}`} alt={`${props.item.dir} 预览`} width={830} height={460}/>
                     </div>
                     <div className="flex gap-2 justify-end items-center flex-wrap">
                         <Breadcrumb path={props.item.dir}/>
