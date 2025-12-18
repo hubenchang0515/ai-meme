@@ -41,7 +41,19 @@ export default defineConfig({
       },
       workbox: {
         skipWaiting: true,
-        globPatterns: ['**/*.{html,js,css,png}'],
+        globPatterns: ['**/*.{html,js,css}'],
+        runtimeCaching: [
+          {
+            urlPattern: ()=>true,
+            handler: "CacheFirst",
+            options: {
+              cacheName: 'runtime-cache',
+              cacheableResponse: {
+                statuses: [0, 200], // 允许 opaque 响应被缓存（status 0）
+              },
+            },
+          },
+        ]
       },
     }),
   ],
