@@ -25,10 +25,13 @@ export default function Declaration() {
                 </blockquote>
                 禁止用于商业用途。
             </div>
+            {
+                !installPrompt ? <></> :
+                <Button onClick={()=>{(installPrompt as any).prompt()}}>
+                    <InstallIcon/> 离线
+                </Button>
+            }
             
-            <Button onClick={()=>{(installPrompt as any).prompt()}}>
-                <InstallIcon/> 离线
-            </Button>
         </div>
     )
 }
