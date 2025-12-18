@@ -3,6 +3,7 @@ import type { Item } from "../utils/catalog";
 import { useCallback, useState } from "react";
 import DoubleDownIcon from "../assets/icons/DoubleDownIcon";
 import Image from "./Image";
+import Button from "./Button";
 
 export default function EntryList(props:{items:Item[]}) {
     const [count, setCount] = useState(5);
@@ -24,10 +25,9 @@ export default function EntryList(props:{items:Item[]}) {
             }
             {
                 count >= props.items.length ? <></> :
-                <button className="cursor-pointer py-1 px-3 rounded-md flex justify-center bg-pink-200 hover:shadow active:bg-rose-200 
-                                    dark:bg-emerald-600 dark:hover:bg-emerald-500 dark:active:bg-emerald-600" onClick={loadMore}>
+                <Button onClick={loadMore}>
                     <DoubleDownIcon/>
-                </button>
+                </Button>
             }
         </div>
     )

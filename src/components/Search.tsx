@@ -1,5 +1,6 @@
 import { useCallback, useRef } from "react"
 import { useNavigate } from "react-router-dom"
+import Button from "./Button";
 
 export default function Search() {
     const inputRef = useRef<HTMLInputElement>(null);
@@ -23,12 +24,12 @@ export default function Search() {
                         }
                     }}
                 />
-                <button
+                <Button
                     className="absolute inset-y-0 right-2 flex items-center text-gray-400 hover:text-blue-600"
                     onClick={search}
                 >
                 🔍
-                </button>
+                </Button>
             </div>
         </div>
     )

@@ -9,6 +9,7 @@ import Breadcrumb from "../components/Breadcrumb";
 import Search from "../components/Search";
 import Footer from "../components/Footer";
 import Image from "../components/Image";
+import Button from "../components/Button";
 
 const ORIGON = 'https://meme.xplanc.org'
 
@@ -53,8 +54,8 @@ export default function DetailPage(props:{item:Item}) {
                         <Breadcrumb path={props.item.dir}/>
                         <span className="flex-1"/>
                         <div className="flex gap-2 items-center">
-                            <button className="cursor-pointer bg-pink-300 dark:bg-emerald-600 py-1 px-3 rounded-md hover:scale-105 active:scale-95" onClick={share}><ShareIcon/></button>
-                            <button className="cursor-pointer bg-pink-300 dark:bg-emerald-600 py-1 px-3 rounded-md hover:scale-105 active:scale-95" onClick={download}><DownloadIcon/></button>
+                            <Button onClick={share}><ShareIcon/></Button>
+                            <Button onClick={download}><DownloadIcon/></Button>
                         </div>
                     </div>
                     <div className="grid grid-cols-3 md:grid-cols-6 gap-2">
