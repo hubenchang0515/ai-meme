@@ -7,6 +7,7 @@ import SearchPage from './pages/SearchPage';
 import { ScrollToTop } from './components/ScrollToTop';
 import { useEffect, useState } from 'react';
 import InstallContext from './components/InstallContext';
+import { shuffle } from './utils/rand';
 
 function App() {
     const [installPrompt, setInstallPrompt] = useState<any>(null);
@@ -23,7 +24,7 @@ function App() {
                 <ScrollToTop/>
                 <InstallContext.Provider value={{installPrompt:installPrompt}}>
                     <Routes>
-                        <Route path='/' element={<HomePage items={items}/>}/>
+                        <Route path='/' element={<HomePage items={shuffle(items)}/>}/>
                         <Route path='/search/:text?' element={<SearchPage items={items}/>}/>
                         {
                             items.map((item, i) => {
