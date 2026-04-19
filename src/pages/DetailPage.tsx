@@ -23,6 +23,38 @@ export default function DetailPage(props:{item:Item}) {
         navigator.clipboard.writeText(props.item.dir.replaceAll('/', ' ') + ' 萌萌表情包\n' + window.location.toString());
     }, [props.item]);
 
+    const copyUrl = useCallback(async (url:string) => {
+        try {
+            if (url.startsWith('http')) {
+                await navigator.clipboard.writeText(url);
+            } else {
+                await navigator.clipboard.writeText(window.location.origin + url);
+            }
+            
+            return true;
+        } catch (error) {
+            console.error('复制失败:', error);
+            return false;
+        }
+    }, []);
+
+    const copyImage = useCallback(async (url:string) => {
+        try {
+            const response = await fetch(url);
+            const blob = await response.blob();
+            await navigator.clipboard.write([
+                new ClipboardItem({
+                    [blob.type]: blob
+                })
+            ]);
+            
+            return true;
+        } catch (error) {
+            console.error('复制失败:', error);
+            return false;
+        }
+    }, []);
+
     const download = useCallback(async () => {
         const zip = new JSZip();
         for (const image of props.item.images) {
@@ -62,8 +94,18 @@ export default function DetailPage(props:{item:Item}) {
                         {
                             props.item.images.map((image, i) => {
                                 return (
-                                    <div key={i} className="hover:shadow">
+                                    <div key={i} className="group relative hover:shadow">
                                         <Image src={`/meme/${props.item.dir}/${image}`} alt={`${props.item.dir} #${i+1}`} width={115} height={95}/>
+                                        <Button className="absolute top-[2%] left-[2%] right-[2%] bottom-[51%] cursor-pointer 
+                                                            hidden group-hover:flex cursor-pointer justify-center items-center
+                                                            gap-1 py-1 px-3 rounded-md font-medium text-white bg-pink-400/90
+                                                            dark:bg-emerald-600/90 active:translate-y-px" 
+                                                            onClick={()=>copyImage(`/meme/${props.item.dir}/${image}`)}>复制图片</Button>
+                                        <Button className="absolute top-[51%] left-[2%] right-[2%] bottom-[2%] cursor-pointer 
+                                                            hidden group-hover:flex cursor-pointer justify-center items-center
+                                                            gap-1 py-1 px-3 rounded-md font-medium text-white bg-pink-400/90 
+                                                            dark:bg-emerald-600/90 active:translate-y-px" 
+                                                            onClick={()=>copyUrl(`/meme/${props.item.dir}/${image}`)}>复制地址</Button>
                                     </div>
                                 )
                             })
