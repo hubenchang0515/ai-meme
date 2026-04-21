@@ -44,7 +44,7 @@ export default defineConfig({
         globPatterns: ['**/*.{html,js,css}'],
         runtimeCaching: [
           {
-            urlPattern: ()=>true,
+            urlPattern: ({ url }) => ['.png'].some(ext => url.pathname.endsWith(ext)),
             handler: "CacheFirst",
             options: {
               cacheName: 'runtime-cache',
