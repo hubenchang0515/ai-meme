@@ -28,7 +28,7 @@ export default function Declaration() {
             {
                 !installPrompt ? <></> :
                 <Button onClick={()=>{(installPrompt as any).prompt()}}>
-                    <InstallIcon/> 离线
+                    <InstallIcon/> 安装
                 </Button>
             }
             

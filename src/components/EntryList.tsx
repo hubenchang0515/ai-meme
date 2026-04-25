@@ -14,6 +14,9 @@ export default function EntryList(props:{items:Item[]}) {
     return (
         <div className="flex flex-col gap-2">
             {
+                props.items.length == 0 && <div className="bg-fuchsia-50 dark:bg-gray-700 rounded-md p-2 text-xs sm:text-sm">没有相关内容</div>
+            }
+            {
                 props.items.slice(0, count).map((item, i) => {
                     return (
                         <Link key={i} to={`/${item.dir}`} className="bg-fuchsia-50 dark:bg-gray-700 rounded-md p-3 pt-1 hover:text-violet-300 hover:shadow">

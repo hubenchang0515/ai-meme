@@ -19,7 +19,7 @@ export default defineConfig({
       manifest: {
         name: '萌萌表情包',
         short_name: '萌萌表情包',
-        description: '海量二次元梦么表情包，一键下载，轻松斗图，让聊天更有趣。',
+        description: '海量二次元萌萌表情包，一键下载，轻松斗图，让聊天更有趣。',
         theme_color: '#ffffff',
         icons: [
           {
