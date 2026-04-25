@@ -6,7 +6,10 @@ export default function Search() {
     const inputRef = useRef<HTMLInputElement>(null);
     const navigate = useNavigate()
     const search = useCallback(() => {
-        navigate(`/search/${inputRef.current?.value}`)
+        const text = inputRef.current?.value.replace(/\s+/g, '');
+        if (text) {
+            navigate(`/search/${text}`)
+        }
     }, []);
     return (
         <div className="w-full">
